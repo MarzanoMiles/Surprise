@@ -1,0 +1,237 @@
+/* congratulations.css */
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+#congratulations-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10000;
+  pointer-events: auto;
+  backdrop-filter: blur(5px);
+  background: rgba(0, 0, 0, 0.5);
+}
+
+#congratulations-overlay * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+#congratulations-overlay .game-container {
+  width: 90%;
+  max-width: 800px;
+  height: 80vh;
+  background-color: #FFFDE8;
+  border-radius: 20px;
+  position: relative;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Press Start 2P', cursive;
+  color: #16811F;
+}
+
+#congratulations-overlay .congratulation-banner {
+  background-color: #FFFDE8;
+  border: 4px solid #16811F;
+  padding: 10px 30px;
+  border-radius: 12px;
+  text-align: center;
+  margin-bottom: 80px;
+  position: relative;
+  max-width: 90%;
+}
+
+#congratulations-overlay .congratulation-banner::before, 
+#congratulations-overlay .congratulation-banner::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  border: 4px solid #16811F;
+  border-radius: 12px;
+}
+
+#congratulations-overlay .congratulation-banner::before {
+  transform: translate(-4px, -4px);
+}
+
+#congratulations-overlay .congratulation-banner::after {
+  transform: translate(4px, 4px);
+}
+
+#congratulations-overlay .message {
+  font-size: clamp(16px, 4vw, 36px);
+  text-align: center;
+  margin-bottom: 100px;
+  line-height: 1.5;
+}
+
+#congratulations-overlay .ground {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 120px;
+  background-color: #16811F;
+  border-top: 8px solid #2A9E3C;
+}
+
+#congratulations-overlay .soil {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 60px;
+  background-color: #8B5E3C;
+  background-image: 
+    linear-gradient(90deg, #7D4E2C 25%, transparent 25%),
+    linear-gradient(90deg, #8B5E3C 50%, #7D4E2C 50%);
+  background-size: 16px 16px;
+}
+
+#congratulations-overlay .tree {
+  position: absolute;
+  bottom: 120px;
+  left: 10%;
+  width: 60px;
+  height: 120px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#congratulations-overlay .tree-top {
+  width: 60px;
+  height: 60px;
+  background-color: #0B6623;
+  border-radius: 50%;
+  box-shadow: -5px -5px 0 5px #094c1a, 
+              5px 5px 0 5px #084417;
+}
+
+#congratulations-overlay .tree-trunk {
+  width: 20px;
+  height: 60px;
+  background-color: #5D432C;
+}
+
+#congratulations-overlay .pine-tree {
+  position: absolute;
+  bottom: 120px;
+  right: 10%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#congratulations-overlay .pine-segments {
+  width: 0;
+  height: 0;
+  border-left: 30px solid transparent;
+  border-right: 30px solid transparent;
+  border-bottom: 40px solid #0E8930;
+  margin-bottom: -15px;
+}
+
+#congratulations-overlay .pine-trunk {
+  width: 15px;
+  height: 20px;
+  background-color: #5D432C;
+}
+
+#congratulations-overlay .cloud {
+  position: absolute;
+  background-color: #E2E9F0;
+  border-radius: 50%;
+  opacity: 0.9;
+}
+
+#congratulations-overlay .cloud-1 {
+  width: 60px;
+  height: 30px;
+  top: 15%;
+  left: 15%;
+  box-shadow: 15px -5px 0 5px #E2E9F0, 
+              30px 0px 0 0px #E2E9F0;
+}
+
+#congratulations-overlay .cloud-2 {
+  width: 70px;
+  height: 35px;
+  top: 20%;
+  right: 15%;
+  box-shadow: 15px -5px 0 8px #E2E9F0, 
+              35px 0px 0 0px #E2E9F0;
+}
+
+#congratulations-overlay .continue-btn {
+  position: absolute;
+  bottom: 70px;
+  right: 60px;
+  background: linear-gradient(180deg, #FFB347 0%, #FF8C00 100%);
+  border: none;
+  padding: 10px 20px;
+  color: #6A1B9A;
+  font-family: 'Press Start 2P', cursive;
+  font-size: 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  text-transform: uppercase;
+  box-shadow: 0 4px 0 #B25900;
+  transition: all 0.2s ease;
+  z-index: 4;
+}
+
+#congratulations-overlay .continue-btn:hover {
+  transform: translateY(2px);
+  box-shadow: 0 2px 0 #B25900;
+}
+
+#congratulations-overlay .continue-btn:active {
+  transform: translateY(4px);
+  box-shadow: none;
+}
+
+@media (max-width: 768px) {
+  #congratulations-overlay .congratulation-banner {
+    margin-bottom: 40px;
+    padding: 8px 20px;
+  }
+  
+  #congratulations-overlay .message {
+    font-size: clamp(12px, 3vw, 24px);
+    margin-bottom: 60px;
+  }
+  
+  #congratulations-overlay .ground {
+    height: 80px;
+  }
+  
+  #congratulations-overlay .soil {
+    height: 40px;
+  }
+  
+  #congratulations-overlay .tree, 
+  #congratulations-overlay .pine-tree {
+    transform: scale(0.7);
+    bottom: 80px;
+  }
+  
+  #congratulations-overlay .continue-btn {
+    font-size: 12px;
+    padding: 8px 16px;
+    bottom: 40px;
+  }
+}

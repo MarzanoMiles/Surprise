@@ -1,0 +1,122 @@
+/* === Mobile Responsive and UI Styling === */
+
+html, body {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  font-family: 'Arial', sans-serif;
+  background: #a8714e;
+  touch-action: none;
+}
+
+/* Lock to Landscape */
+@media screen and (orientation: portrait) {
+  body::before {
+    content: "Please rotate your device to landscape mode.";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: #000c;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10000;
+    font-size: 24px;
+    text-align: center;
+    padding: 1rem;
+  }
+}
+
+/* Battle UI Container */
+#battle-ui {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background: rgba(20, 20, 20, 0.75);
+  padding: 1rem;
+  box-sizing: border-box;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Question Text */
+#question {
+  color: #fff;
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+/* Option Buttons */
+.battle-option {
+  width: 90%;
+  max-width: 500px;
+  margin: 0.4rem 0;
+  padding: 1rem;
+  font-size: 1.2rem;
+  background: #4a90e2;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.1s;
+}
+.battle-option:hover {
+  background: #357ab8;
+}
+.battle-option:active {
+  transform: scale(0.97);
+  background: #2e66a5;
+}
+
+/* Confidence Bars */
+.bar-label {
+  color: #fff;
+  font-size: 1rem;
+  margin-top: 0.5rem;
+  text-align: center;
+}
+
+.bar-container {
+  width: 90%;
+  max-width: 500px;
+  background: #333;
+  border-radius: 10px;
+  margin: 0.2rem 0 1rem;
+  height: 18px;
+  overflow: hidden;
+}
+
+.bar-fill {
+  height: 100%;
+  transition: width 0.5s ease;
+}
+
+.bar-fill.bar-player {
+  background: linear-gradient(90deg, #4caf50, #81c784);
+}
+
+.bar-fill.bar-npc {
+  background: linear-gradient(90deg, #f44336, #e57373);
+}
+
+/* Responsive Font Sizing */
+@media (max-width: 768px) {
+  #question {
+    font-size: 1.2rem;
+  }
+
+  .battle-option {
+    font-size: 1rem;
+    padding: 0.8rem;
+  }
+
+  .bar-label {
+    font-size: 0.9rem;
+  }
+}

@@ -1,0 +1,78 @@
+@import url('https://fonts.googleapis.com/css2?family=Caveat&display=swap');
+
+body {
+  height: calc(100vh + 200px);
+  /* Makes the page scrollable */
+  margin: 0;
+  overflow-x: hidden;
+  /* Prevents horizontal scroll */
+  background-color: beige;
+  font-family: 'Caveat', cursive;
+  scroll-behavior: smooth;
+}
+
+#note {
+  text-align: center;
+  font-size: 2em;
+}
+
+#door {
+  max-width: 50%;
+  max-height: 50%;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotateY(0deg);
+  transform-origin: right;
+  transition: transform 0.5s;
+  z-index: 2;
+}
+
+#foundation {
+  max-width: 50%;
+  max-height: 50%;
+  position: fixed;
+  transform: translate(-50%, -50%);
+  top: 50%;
+  left: 50%;
+  z-index: 1;
+}
+
+
+#shadow {
+  max-width: 50%;
+  max-height: 50%;
+  position: fixed;
+  transform: translate(-50%, -50%);
+  top: 50%;
+  left: 50%;
+  z-index: 0;
+}
+
+#click {
+  position: fixed;
+  transform: translate(-50%, -50%);
+  top: 50%;
+  left: 50%;
+  min-width: max-content;
+  z-index: 3;
+  text-decoration: underline;
+  font-size: 1.4em;
+  transition: color 0.5s, background-color 0.5s;
+  color: rgba(0, 0, 0, 0);
+  /* Add transitions */
+}
+
+.test {
+  color: rgb(250, 250, 250) !important; /* Make text visible */
+  text-shadow: 0 0 8px #8a2be2;
+}
+
+@keyframes glow {
+  from {
+    text-shadow: 0 0 10px #8a2be2, 0 0 20px #8a2be2, 0 0 30px #8a2be2, 0 0 40px #8a2be2, 0 0 50px #8a2be2, 0 0 60px #8a2be2;
+  }
+  to {
+    text-shadow: 0 0 20px #8a2be2, 0 0 30px #8a2be2, 0 0 40px #8a2be2, 0 0 50px #8a2be2, 0 0 60px #8a2be2, 0 0 70px #8a2be2;
+  }
+}
