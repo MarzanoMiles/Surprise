@@ -584,8 +584,8 @@ function showHintBox() {
   style.textContent = `
     #hint-box {
       position: fixed;
-      top: 50%;
-      left: 50%;
+      top: 30%;
+      left: 30%;
       transform: translate(-50%, -50%);
       background: rgba(0, 0, 0, 0.8);
       color: white;
