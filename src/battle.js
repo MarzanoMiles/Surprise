@@ -570,13 +570,16 @@ loadAnimatedFBX('./resources/boy/', 'player_boy.fbx', 0.035, [-3.5, 0, 10], 120,
 loadAnimatedFBX('./resources/npc1/', 'npc_default.fbx', 0.05, [5, 0, 0], -30, 'npc', tryStart);
 
 // === Floating Hint Box ===
+// === Floating Hint Box ===
 function showHintBox() {
   const hintBox = document.createElement('div');
   hintBox.id = 'hint-box';
   hintBox.innerHTML = `
     <div class="hint-content">
-      <p>Try winning silly:&gt;, Sadly, Gemini has an RPD limit — it might become repetitive. </p>
-      <button id="hint-ok-btn">OK</button>
+      <h3>Battle Tip 💡</h3>
+      <p>Try winning silly:&gt;</p>
+      <p class="small-text">With 200+ pre-loaded burns, repetition won't be an issue!</p>
+      <button id="hint-ok-btn">GOT IT</button>
     </div>
   `;
   
@@ -584,39 +587,82 @@ function showHintBox() {
   style.textContent = `
     #hint-box {
       position: fixed;
-      top: 30%;
-      left: 30%;
+      top: 50%;
+      left: 50%;
       transform: translate(-50%, -50%);
-      background: rgba(0, 0, 0, 0.8);
+      width: 60%;
+      max-width: 600px;
+      min-width: 300px;
+      background: rgba(0, 0, 0, 0.9);
       color: white;
-      padding: 20px;
-      border-radius: 10px;
+      padding: 30px;
+      border-radius: 15px;
       z-index: 1000;
-      font-family: Arial, sans-serif;
+      font-family: 'Arial', sans-serif;
       text-align: center;
-      box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+      box-shadow: 0 0 30px rgba(255, 215, 0, 0.4);
+      border: 2px solid gold;
+      backdrop-filter: blur(5px);
     }
+    
     #hint-box .hint-content {
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 15px;
+      gap: 20px;
     }
+    
+    #hint-box h3 {
+      margin: 0;
+      font-size: 24px;
+      color: gold;
+      text-shadow: 0 0 5px rgba(255, 215, 0, 0.5);
+    }
+    
     #hint-box p {
       margin: 0;
-      font-size: 18px;
+      font-size: 20px;
+      line-height: 1.4;
     }
+    
+    #hint-box .small-text {
+      font-size: 16px;
+      opacity: 0.8;
+    }
+    
     #hint-box button {
-      background: #4CAF50;
+      background: linear-gradient(to bottom, #4CAF50, #45a049);
       color: white;
       border: none;
-      padding: 8px 20px;
-      border-radius: 5px;
+      padding: 12px 30px;
+      border-radius: 50px;
       cursor: pointer;
-      font-size: 16px;
+      font-size: 18px;
+      font-weight: bold;
+      margin-top: 15px;
+      transition: all 0.3s;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     }
+    
     #hint-box button:hover {
-      background: #45a049;
+      background: linear-gradient(to bottom, #45a049, #3d8b40);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+    }
+    
+    #hint-box button:active {
+      transform: translateY(0);
+    }
+    
+    @media (max-width: 768px) {
+      #hint-box {
+        width: 80%;
+        padding: 20px;
+      }
+      
+      #hint-box p {
+        font-size: 18px;
+      }
     }
   `;
   
@@ -624,13 +670,25 @@ function showHintBox() {
   document.body.appendChild(hintBox);
   
   document.getElementById('hint-ok-btn').addEventListener('click', () => {
-    hintBox.remove();
-    style.remove();
+    hintBox.style.opacity = '0';
+    hintBox.style.transform = 'translate(-50%, -50%) scale(0.9)';
+    setTimeout(() => {
+      hintBox.remove();
+      style.remove();
+    }, 300);
   });
+
+  // Animate on appear
+  setTimeout(() => {
+    hintBox.style.opacity = '1';
+    hintBox.style.transform = 'translate(-50%, -50%) scale(1)';
+  }, 10);
 }
 
-// Show hint box after 3 seconds
-setTimeout(showHintBox, 3000);
+// Show hint box after 3 seconds with smooth entrance
+setTimeout(() => {
+  showHintBox();
+}, 30);
 
 // === Music Setup ===
 
