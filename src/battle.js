@@ -575,7 +575,7 @@ function showHintBox() {
   hintBox.id = 'hint-box';
   hintBox.innerHTML = `
     <div class="hint-content">
-      <p>Try winning silly:&gt;</p>
+      <p>Try winning silly:&gt;, Sadly, Gemini has an RPD limit — it might become repetitive. </p>
       <button id="hint-ok-btn">OK</button>
     </div>
   `;
