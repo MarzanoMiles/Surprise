@@ -578,7 +578,7 @@ function showHintBox() {
     <div class="hint-content">
       <h3>Battle Tip 💡</h3>
       <p>Try winning silly:&gt;</p>
-      <p class="small-text">With 200+ pre-loaded burns, repetition won't be an issue!</p>
+      <p class="small-text">With AI pre-loaded burns, Sadly, Gemini has an RPD limit — it might become repetitive!</p>
       <button id="hint-ok-btn">GOT IT</button>
     </div>
   `;
