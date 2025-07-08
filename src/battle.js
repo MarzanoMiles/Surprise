@@ -331,11 +331,11 @@ class FlipTopBattleManager {
 
   useFallbackLines() {
     this.currentLine = {
-      text: "Without _____, the castle is in danger!",
+      text: "You're like a misplaced modifier — always sayin’ the wrong thing at the wrong ___!",
       options: [
-        { text: "defense", correct: true, playerAnim: "boy_taunt.fbx", npcAnim: "npc_lose.fbx" },
-        { text: "army", correct: false, playerAnim: "boy_sad.fbx", npcAnim: "npc_taunt.fbx" },
-        { text: "leader", correct: false, playerAnim: "boy_sad.fbx", npcAnim: "npc_taunt.fbx" },
+        { text: "place", correct: true, playerAnim: "boy_taunt.fbx", npcAnim: "npc_lose.fbx" },
+        { text: "person", correct: false, playerAnim: "boy_sad.fbx", npcAnim: "npc_taunt.fbx" },
+        { text: "tea", correct: false, playerAnim: "boy_sad.fbx", npcAnim: "npc_taunt.fbx" },
       ]
     };
     this.displayLine();
@@ -568,6 +568,69 @@ function tryStart() {
 
 loadAnimatedFBX('./resources/boy/', 'player_boy.fbx', 0.035, [-3.5, 0, 10], 120, 'player', tryStart);
 loadAnimatedFBX('./resources/npc1/', 'npc_default.fbx', 0.05, [5, 0, 0], -30, 'npc', tryStart);
+
+// === Floating Hint Box ===
+function showHintBox() {
+  const hintBox = document.createElement('div');
+  hintBox.id = 'hint-box';
+  hintBox.innerHTML = `
+    <div class="hint-content">
+      <p>Try winning silly:&gt;</p>
+      <button id="hint-ok-btn">OK</button>
+    </div>
+  `;
+  
+  const style = document.createElement('style');
+  style.textContent = `
+    #hint-box {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: rgba(0, 0, 0, 0.8);
+      color: white;
+      padding: 20px;
+      border-radius: 10px;
+      z-index: 1000;
+      font-family: Arial, sans-serif;
+      text-align: center;
+      box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+    }
+    #hint-box .hint-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 15px;
+    }
+    #hint-box p {
+      margin: 0;
+      font-size: 18px;
+    }
+    #hint-box button {
+      background: #4CAF50;
+      color: white;
+      border: none;
+      padding: 8px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+    #hint-box button:hover {
+      background: #45a049;
+    }
+  `;
+  
+  document.head.appendChild(style);
+  document.body.appendChild(hintBox);
+  
+  document.getElementById('hint-ok-btn').addEventListener('click', () => {
+    hintBox.remove();
+    style.remove();
+  });
+}
+
+// Show hint box after 3 seconds
+setTimeout(showHintBox, 3000);
 
 // === Music Setup ===
 
